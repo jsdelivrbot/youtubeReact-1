@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-
-import App from './components/app';
-import reducers from './reducers';
-
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+import API_KEY from './APIKey'; //file is gitignored
+//create a new component which should produce html
+const App = () => {
+  return <div>Jello</div>;
+}
+console.log(API_KEY);
+//take component's generated html and put it in the dom
+ReactDOM.render(<App />, document.querySelector('.container'));
