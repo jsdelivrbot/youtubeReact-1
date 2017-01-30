@@ -6,9 +6,9 @@ constructor(props){
   super(props);
 }
   render() {
-    const { videos } = this.props;
+    const { videos, onVideoSelect } = this.props;
     const videoItems = videos.map((video) => {
-      return <VideoListItem video={video} key={video.etag} />
+      return <VideoListItem onVideoSelect={onVideoSelect} video={video} key={video.etag} />
     });
 
     return (
