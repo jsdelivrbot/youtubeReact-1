@@ -13,11 +13,16 @@ class App extends Component {
     super(props);
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
     };
+    this.videoSearch('mozart')
+    self = this;
 
-    YTSearch({key: API_KEY, term: 'mozart'}, (videos) => { //set an initial state with a search
-      this.setState({
+  }
+
+  videoSearch(term) {
+    YTSearch({key: API_KEY, term: term}, (videos) => { //set an initial state with a search
+      self.setState({
         videos,
         selectedVideo: videos[0]
        });
@@ -27,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar videoSearch={this.videoSearch}/>
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
         onVideoSelect={(selectedVideo) => { this.setState({ selectedVideo }); console.log('clicked!') } }
